@@ -1,21 +1,13 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <div class="device-panel">
+      <div class="device">
+        <div class="screen" :style="{ backgroundImage: `url(${imageURI})` }" />
+      </div>
+    </div>
+    <div class="controls">
+      <input v-model="imageURI" type="text" placeholder="Image URI"/>
+    </div>
   </div>
 </template>
 
@@ -24,9 +16,10 @@ export default {
   name: 'app',
   data () {
     return {
+      imageURI: '',
       msg: 'Welcome to Your Vue.js App'
     }
-  }
+  },
 }
 </script>
 
@@ -56,5 +49,25 @@ li {
 
 a {
   color: #42b983;
+}
+
+
+#app {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.device {
+  padding: 20px;
+  border-radius: 5px;
+  background: #ccc;
+}
+
+.screen {
+  width: 400px;
+  height: 400px;
+  background: #000;
+  background-size: cover;
+  background-position: center;
 }
 </style>
